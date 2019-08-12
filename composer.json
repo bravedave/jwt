@@ -1,6 +1,6 @@
 {
-	"name": "bravedave/logon",
-	"description": "Logon Module",
+	"name": "bravedave/jwt",
+	"description": "JWT Module for DVC",
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"homepage": "http://brayworth.com",
