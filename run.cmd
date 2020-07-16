@@ -1,17 +1,15 @@
 @Echo Off
-REM ~ for /F "tokens=3 delims=: " %%H in ('sc query "MySQL" ^| findstr "        STATE"') do (
-	REM ~ if /I "%%H" NEQ "RUNNING" (
-		REM ~ @REM Put your code you want to execute here
-		REM ~ @REM For example, the following line
-		REM ~ CScript StartMySQL.vbs
-
-	REM ~ )
-
-REM ~ )
-
 SETLOCAL
 SET WD=%CD%
 
 CD www
-C:\PHP\php -S localhost:80 -c c:\php\php.ini _dvc.php
+
+rem +--------------------------------------------
+rem | Port 80 may be blocked by the firewall or
+rem | if the ports is occupied by another service
+rem | use 8080 as an alternative and access via
+rem |    http://localhost:8080
+rem +--------------------------------------------
+C:\PHP\php -S localhost:80 -c c:\php\php.ini-development _mvp.php
+
 CD %WD%

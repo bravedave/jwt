@@ -11,12 +11,21 @@
 		"email": "davbray@gmail.com",
 		"homepage": "http://brayworth.com"
 	}],
+	"repositories": [
+		{ "type": "git", "url": "https://github.com/bravedave/green" }
+	],
 	"require": {
 		"bravedave/dvc": "dev-master",
+		"bravedave/green": "dev-master",
 		"firebase/php-jwt": "^5.0"
 	},
 	"autoload": {
-		"psr-4": { "dvc\\jwt\\": "jwt/" }
+		"psr-4": {
+			"": "application/app",
+			"dvc\\jwt\\": "jwt/"
+
+		}
+
 	}
 
 }

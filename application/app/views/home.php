@@ -4,10 +4,10 @@
  * BrayWorth Pty Ltd
  * e. david@brayworth.com.au
  *
- * This work is licensed under a Creative Commons Attribution 4.0 International Public License.
- *      http://creativecommons.org/licenses/by/4.0/
+ * MIT License
  *
 */  ?>
 
-<h6>JWT Issue Sample</h6>
-
+<div class="markdown-body">
+<?= Parsedown::instance()->text( file_get_contents( __DIR__ . '/../../../readme.md')); ?>
+</div>

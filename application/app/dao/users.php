@@ -4,15 +4,16 @@
  * BrayWorth Pty Ltd
  * e. david@brayworth.com.au
  *
- * This work is licensed under a Creative Commons Attribution 4.0 International Public License.
- * 		http://creativecommons.org/licenses/by/4.0/
+ * MIT License
  *
- * */
+*/
 
 namespace dao;
 
-class users extends _dao {
-	protected $_db_name = 'users';
+use green\users\dao\users as greenusers;
+
+class users extends greenusers {
+	// protected $_db_name = 'users';
 
 	public function getByEmail( $email) {
 		if ( $res = $this->Result( sprintf( "SELECT * FROM users WHERE email = '%s'", $this->escape( $email)))) {
