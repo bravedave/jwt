@@ -40,10 +40,7 @@ this demo sets up a default user
 
 		},
 
-	}).then( function( d) {
-		console.log( d);
-
-	});
+	}).then( d => { console.log( d); });
 
 })(_brayworth_);
 ```
@@ -71,10 +68,7 @@ this demo sets up a default user
 				data : { action : 'something' },
 				headers : { 'authorization' : 'Bearer ' + d.jwt }
 
-			}).then( function( d) {
-				console.log( d);
-
-			});
+			}).then( d => { console.log( d); });
 
 		} else { console.log( d); }
 
