@@ -9,5 +9,5 @@
 */  ?>
 
 <div class="markdown-body">
-<?= Parsedown::instance()->text( file_get_contents( __DIR__ . '/../../../readme.md')); ?>
+<?= Parsedown::instance()->text( file_get_contents( __DIR__ . '/../../../../readme.md')); ?>
 </div>
