@@ -1,17 +1,17 @@
 {
 	"name": "bravedave/jwt",
 	"description": "JWT Module for DVC",
-	"version": "0.0.1",
 	"minimum-stability": "dev",
-	"prefer-stable": true,
 	"homepage": "http://brayworth.com",
 	"type": "library",
 	"license": "MIT",
-	"authors": [{
-		"name": "Brave Dave",
-		"email": "davbray@gmail.com",
-		"homepage": "http://brayworth.com"
-	}],
+	"authors": [
+		{
+			"name": "Brave Dave",
+			"email": "david@brayworth.com.au"
+		}
+	],
+
 	"require": {
 		"bravedave/dvc": "*",
 		"firebase/php-jwt": "^5.0"
