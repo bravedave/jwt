@@ -11,17 +11,21 @@
 			"email": "david@brayworth.com.au"
 		}
 	],
-
 	"require": {
 		"bravedave/dvc": "*",
 		"firebase/php-jwt": "^5.0"
 	},
+	"require-dev": {
+		"bravedave/green": "*"
+	},
 	"autoload": {
 		"psr-4": {
 			"dvc\\jwt\\": "jwt/"
-
 		}
-
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"": "application/app/"
+		}
 	}
-
 }

@@ -40,12 +40,10 @@ this demo sets up a default user
 
 		},
 
-	}).then( d => { console.log( d); });
+	}).then(console.log);
 
 })(_brayworth_);
 ```
-
-
 
 ###### to do something useful:
 ```javascript
@@ -62,13 +60,13 @@ this demo sets up a default user
 
 	}).then( d => {
 		if ( 'ack' == d.response) {
-			console.log( d);
+			// console.log( d);
 			_.post({
 				url : _.url(''),
 				data : { action : 'something' },
 				headers : { 'authorization' : 'Bearer ' + d.jwt }
 
-			}).then( d => { console.log( d); });
+			}).then(console.log);
 
 		} else { console.log( d); }
 
