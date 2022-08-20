@@ -29,48 +29,55 @@ this demo sets up a default user
 
 ###### so to retrieve a token:
 ```javascript
-( _ => {
-	_.post({
-		url : _.url(''),
-		data : {
-			action : 'token',
-			email : 'john@itizen.dom',
-			pass : 'secret',
-			grant_type : 'client_credentials'
+const api = data => fetch(data.url, {
+  method: 'POST', // or 'PUT'
+  headers: { ...{
+    'Content-Type': 'application/json',
+  }, ...data.headers},
+  body: JSON.stringify(data.data)
+})
+.then(r => r.json())
+.catch(err => console.error('Error:', err));
 
-		},
-
-	}).then(console.log);
-
-})(_brayworth_);
+api( {
+	url : './',
+	data : {
+		action : 'token',
+		email : 'john@itizen.dom',
+		pass : 'secret',
+		grant_type : 'client_credentials'
+	}
+}).then(console.log);
 ```
 
 ###### to do something useful:
 ```javascript
-( _ => {
-	_.post({
-		url : _.url(''),
-		data : {
-			action : 'token',
-			email : 'john@itizen.dom',
-			pass : 'secret',
-			grant_type : 'client_credentials'
+const api = data => fetch(data.url, {
+  method: 'POST', // or 'PUT'
+  headers: { ...{
+    'Content-Type': 'application/json',
+  }, ...data.headers},
+  body: JSON.stringify(data.data)
+})
+.then(r => r.json())
+.catch(err => console.error('Error:', err));
 
-		},
+api({
+	url : './',
+	data : {
+		action : 'token',
+		email : 'john@itizen.dom',
+		pass : 'secret',
+		grant_type : 'client_credentials'
+	},
+}).then( d => {
+	if ( 'ack' == d.response) {
+		api({
+			url : './',
+			data : { action : 'something' },
+			headers : { 'authorization' : 'Bearer ' + d.jwt }
+		}).then(console.log);
 
-	}).then( d => {
-		if ( 'ack' == d.response) {
-			// console.log( d);
-			_.post({
-				url : _.url(''),
-				data : { action : 'something' },
-				headers : { 'authorization' : 'Bearer ' + d.jwt }
-
-			}).then(console.log);
-
-		} else { console.log( d); }
-
-	});
-
-})( _brayworth_);
+	} else { console.log( d); }
+});
 ```

@@ -9,6 +9,12 @@
 */
 
 class home extends Controller {
+
+	protected static function __isValidJSON($str) {
+		json_decode($str);
+		return json_last_error() == JSON_ERROR_NONE;
+	}
+
 	protected function _index() {
 		$render = [
 			'title' => $this->title = config::$WEBNAME,
@@ -52,24 +58,27 @@ class home extends Controller {
 	}
 
 	protected function posthandler() {
-		$action = $this->getPost('action');
 
-		if ('token' == $action) {
-			if ($email = $this->getPost('email')) {
-				if ($pass = $this->getPost('pass')) {
+		$input = file_get_contents('php://input');
+		$json = (object)[];
+		if (self::__isValidJSON($input)) {
+			$json = (object)json_decode($input);
+		}
+
+		if ('token' == ($json->action ?? '')) {
+			if ($email = ($json->email ?? '')) {
+				if ($pass = ($json->pass ?? '')) {
 					if (strings::isEmail($email)) {
 						$dao = new dao\users;
 						if ($dto = $dao->getByEmail($email)) {
 							if (password_verify($pass, $dto->password)) {
 								$jwt = dvc\jwt\jwt::token([
-									'audience_claim' => $this->getPost('grant_type') || 'client_credentials',
+									'audience_claim' => ($json->grant_type ?? '') || 'client_credentials',
 									'data' => [
 										'id' => $dto->id,
 										'name' => $dto->name,
 										'email' => $dto->email
-
 									]
-
 								]);
 
 								$expires = dvc\jwt\jwt::expires($jwt);
